@@ -15,7 +15,12 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         MigrationHelper.DEBUG = true;
-        MyDaoMaster helper = new MyDaoMaster(this, "zb.db",null);
+
+
+//        DaoMaster.OpenHelper helper = new DaoMaster.DevOpenHelper(this,getResources().getString(R.string.database_name),null);
+//        Database db = helper.getWritableDb();
+
+        MyDaoMaster helper = new MyDaoMaster(this, getResources().getString(R.string.database_name),null);
         Database db = helper.getWritableDb();
         daoSession = new DaoMaster(db).newSession();
     }
